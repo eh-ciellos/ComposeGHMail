@@ -4,12 +4,12 @@ inputs:
   workflow_message:
     description: 'The message from the workflow'
     required: true
-  workflow_run_name:
+  workflow_run_name:  # Ensure this input is defined
     description: 'The name of the workflow run'
-    required: false  # Set to true if required
-  workflow_run_id:
+    required: false
+  workflow_run_id:  # Ensure this input is defined
     description: 'The ID of the workflow run'
-    required: false  # Set to true if required
+    required: false
 outputs:
   email_body:
     description: 'The composed email body'
