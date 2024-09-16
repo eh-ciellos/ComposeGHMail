@@ -7,10 +7,12 @@ param(
 
 # Compose the email body
 $emailBody = "Composed email body: $Message"
+Write-Output $emailBody
 
 # Set the output for the composed email body
 $outputFile = "$env:GITHUB_OUTPUT"
 Add-Content -Path $outputFile -Value "email_body=$emailBody`n"
+Write-Output "email_body=$emailBody`n"
 
 # Debug output (Optional: for troubleshooting)
 Write-Output "Composed Email Body: $emailBody"
