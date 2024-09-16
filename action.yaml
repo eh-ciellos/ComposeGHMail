@@ -14,6 +14,12 @@ outputs:
   email_body:
     description: 'The composed email body'
     value: ${{ steps.compose-mail.outputs.email_body }}
+  workflow_run_name:
+    description: 'The name of the workflow run'
+    value: ${{ steps.compose-mail.outputs.workflow_run_name }}
+  workflow_run_id:
+    description: 'The ID of the workflow run'
+    value: ${{ steps.compose-mail.outputs.workflow_run_id }}
 runs:
   using: 'composite'
   steps:
