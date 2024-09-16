@@ -1,0 +1,18 @@
+# .github/actions/compose-email/action.yml
+name: 'Compose Mail'
+description: 'Compose an email based on the workflow message'
+inputs:
+  workflow_message:
+    description: 'The message from the workflow'
+    required: true
+outputs:
+  email_body:
+    description: 'The composed email body'
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Compose Email'
+      id: compose_email
+      shell: pwsh
+      run: |
+        .github/actions/compose-mail/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}"
