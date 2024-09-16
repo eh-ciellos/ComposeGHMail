@@ -4,14 +4,16 @@ function ComposeEmail {
 param(
     [string]$Message  # Input parameter for the message
 )
- $outputFile = "$env:GITHUB_OUTPUT"
+
 # Compose the email body
 $emailBody = "Composed email body: $Message"
 
 # Set the output for the composed email body
-#Write-Output "emailody=$emailBody" >> $env:GITHUB_OUTPUT
-Add-Content -Path $outputFile -Value "emailBody=$emailBody"
-Write-Output "$emailBody"
+$outputFile = "$env:GITHUB_OUTPUT"
+Add-Content -Path $outputFile -Value "email_body=$emailBody`n"
+
+# Debug output (Optional: for troubleshooting)
+Write-Output "Composed Email Body: $emailBody"
 }
 
 ComposeEmail -Message $Message
