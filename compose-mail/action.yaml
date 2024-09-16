@@ -16,4 +16,4 @@ runs:
       id: compose-mail
       shell: pwsh
       run: |
-        .github/actions/compose-mail/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}"
+        actions/compose-mail/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}"
