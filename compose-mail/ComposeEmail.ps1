@@ -10,7 +10,7 @@ function ComposeEmail {
     
     # Set the output for the composed email body
     #Write-Output "email_body=$emailBody" >> $env:GITHUB_OUTPUT
-    Add-Content -Path $outputFile -Value "email_body=$emailBody"
+    Add-Content -Path $outputFile -Value "emailBody=$emailBody"
     Write-Output "$emailBody"
     }
     
