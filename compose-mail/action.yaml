@@ -6,7 +6,7 @@ inputs:
     description: 'The message from the workflow'
     required: true
 outputs:
-  email_body:
+  emailBody:
     description: 'The composed email body'
 runs:
   using: 'composite'
