@@ -8,12 +8,12 @@ inputs:
 outputs:
   emailBody:
     description: 'The composed email body'
-    value: ${{ steps.compose_email.outputs.emailBody }}
+    value: ${{ steps.compose-mail.outputs.emailBody }}
 runs:
   using: 'composite'
   steps:
     - name: 'Compose Email'
-      id: compose_email
+      id: compose-mail
       shell: pwsh
       run: |
         .github/actions/compose-mail/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}"
