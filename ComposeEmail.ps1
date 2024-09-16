@@ -1,22 +1,22 @@
-# .github/actions/compose-email/ComposeEmail.ps1
-function ComposeEmail {
+# .github/actions/compose-mail/ComposeEmail.ps1
 
 param(
-    [string]$Message  # Input parameter for the message
+    [string]$Message,
+    [string]$RunName,
+    [string]$RunId
 )
 
-# Compose the email body
-$emailBody = "Composed email body: $Message"
-Write-Output $emailBody
-Write-Output $Message
+# Debug: Print the received inputs
+Write-Output "Received workflow message: $Message"
+Write-Output "Received workflow run name: $RunName"
+Write-Output "Received workflow run ID: $RunId"
+
+# Process the message
+$emailBody = "Composed email body: $Message, Run Name: $RunName, Run ID: $RunId"
 
 # Set the output for the composed email body
 $outputFile = "$env:GITHUB_OUTPUT"
 Add-Content -Path $outputFile -Value "email_body=$emailBody`n"
-Write-Output "email_body=$emailBody`n"
 
-# Debug output (Optional: for troubleshooting)
+# Debug: Print the composed email body
 Write-Output "Composed Email Body: $emailBody"
-}
-
-ComposeEmail -Message $Message
