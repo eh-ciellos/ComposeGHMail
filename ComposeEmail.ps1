@@ -15,8 +15,8 @@ Write-Output "Received workflow run ID: $RunId"
 $emailBody = "Composed email body: $Message, Run Name: $RunName, Run ID: $RunId"
 
 # Set the output for the composed email body
-$outputFile = "$env:GITHUB_OUTPUT"
-Add-Content -Path $outputFile -Value "email_body=$emailBody`n"
+Add-Content -Path $env:GITHUB_OUTPUT -Value "Environments=$emailBody"
+Add-Content -Path $env:GITHUB_ENV -Value "Environments=$emailBody"
 
 # Debug: Print the composed email body
 Write-Output "Composed Email Body: $emailBody"
