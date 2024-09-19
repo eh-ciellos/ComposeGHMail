@@ -27,4 +27,4 @@ runs:
       id: compose-mail
       shell: pwsh
       run: |
-        ${{ github.action_path }}/actions/compose-mail/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}" -RunName "${{ inputs.workflow_run_name }}" -RunId "${{ inputs.workflow_run_id }}"
+        try { ${{ github.action_path }}/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}" -RunName "${{ inputs.workflow_run_name }}" -RunId "${{ inputs.workflow_run_id }}" catch { Write-Host "::Error::Unexpected error when running action ($($_.Exception.Message))"; exit 1 }
