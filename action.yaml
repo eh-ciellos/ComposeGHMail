@@ -3,14 +3,15 @@ name: 'Compose Mail'
 description: 'Compose an email based on the workflow message'
 inputs:
   workflowMessage:
-    description: 'The message from the workflow'
+    description: 'Message to include in the email'
     required: true
   workflowRunName:
-    description: 'The message from the workflow'
+    description: 'The workflow run name'
     required: false
   workflowRunId:
-    description: 'The message from the workflow'
+    description: 'The workflow run ID'
     required: false
+
 outputs:
   emailBody:
     description: 'The composed email body'
