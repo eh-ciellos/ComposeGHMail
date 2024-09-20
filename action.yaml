@@ -2,15 +2,15 @@
 name: 'Compose Mail'
 description: 'Compose an email based on the workflow message'
 inputs:
-  workflow_message:
+  workflowMessage:
     description: 'The message from the workflow'
     required: true
-  workflow_run_name:
+  workflowRunName:
     description: 'The message from the workflow'
-    required: true
-  workflow_run_id:
+    required: false
+  workflowRunId:
     description: 'The message from the workflow'
-    required: true
+    required: false
 outputs:
   emailBody:
     description: 'The composed email body'
@@ -22,4 +22,4 @@ runs:
       id: compose-mail
       shell: pwsh
       run: |
-        try { ${{ github.action_path }}/ComposeEmail.ps1 -Message "${{ inputs.workflow_message }}" -RunName "${{ inputs.workflow_run_name }}" -RunId "${{ inputs.workflow_run_id }}" } catch { Write-Host "::Error::Unexpected error when running action ($($_.Exception.Message))"; exit 1 }
+        try { ${{ github.action_path }}/ComposeEmail.ps1 -Message "${{ inputs.workflowMessage }}" -RunName "${{ inputs.workflowRunName }}" -RunId "${{ inputs.workflowRunId }}" } catch { Write-Host "::Error::Unexpected error when running action ($($_.Exception.Message))"; exit 1 }
