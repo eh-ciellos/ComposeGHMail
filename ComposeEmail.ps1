@@ -1,12 +1,18 @@
 # .github/actions/compose-mail/ComposeEmail.ps1
+param(
+    [Parameter(HelpMessage = "The GitHub Token running the action", Mandatory = $true)]
+    [string]$Message,
+    [string]$RunName,
+    [string]$RunId
+)
 
 function Compose-Email {
     param(
-        [Parameter(HelpMessage = "The GitHub Token running the action", Mandatory = $true)]
-        [string]$Message,
-        [string]$RunName,
-        [string]$RunId
-    )
+    [Parameter(HelpMessage = "The GitHub Token running the action", Mandatory = $true)]
+    [string]$Message,
+    [string]$RunName,
+    [string]$RunId
+)
 
     # Debug: Print the received inputs
     Write-Output "Received workflow message: $Message"
@@ -14,7 +20,8 @@ function Compose-Email {
     Write-Output "Received workflow run ID: $RunId"
 
     # Process the message
-$emailBody = @"
+$emailBody =
+@"
     <html>
     <body>
     <h1>Workflow Errors</h1>
@@ -40,4 +47,7 @@ $emailBody = @"
 }
 
 # Example usage:
+#$Message = "This is an example error message"
+#$RunName = "Example Workflow Run"
+#$RunId = "123456"
 Compose-Email -Message $Message -RunName $RunName -RunId $RunId
