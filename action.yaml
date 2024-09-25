@@ -15,12 +15,12 @@ inputs:
 outputs:
   emailBody:
     description: 'The composed email body'
-    value: ${{ steps.compose-mail.outputs.emailBody }}
+    value: ${{ steps.compose_mail.outputs.emailBody }}
 runs:
   using: 'composite'
   steps:
     - name: 'Compose Email'
-      id: compose-mail
+      id: compose_mail
       shell: pwsh
       run: |
         try { ${{ github.action_path }}/ComposeEmail.ps1 -Message "${{ inputs.workflowMessage }}" -RunName "${{ inputs.workflowRunName }}" -RunId "${{ inputs.workflowRunId }}" } catch { Write-Host "::Error::Unexpected error when running action ($($_.Exception.Message))"; exit 1 }
