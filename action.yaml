@@ -13,9 +13,9 @@ inputs:
     required: false
 
 outputs:
-  emailBody:
+  emailBodyBase64:
     description: 'The composed email body'
-    value: ${{ steps.compose_mail.outputs.emailBody }}
+    value: ${{ steps.compose_mail.outputs.emailBodyBase64 }}
 runs:
   using: 'composite'
   steps:

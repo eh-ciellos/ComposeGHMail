@@ -39,11 +39,11 @@ $emailBody =
     Write-Output $emailBodyBase64
 
     # Set the output for the composed email body
-    Add-Content -Path $env:GITHUB_OUTPUT -Value "email_body=$emailBody"
-    Add-Content -Path $env:GITHUB_ENV -Value "email_body=$emailBody"
+    Add-Content -Path $env:GITHUB_OUTPUT -Value "email_body=$emailBodyBase64"
+    Add-Content -Path $env:GITHUB_ENV -Value "email_body=$emailBodyBase64"
 
     # Debug: Print the composed email body
-    Write-Output "Composed Email Body: $emailBody"
+    #Write-Output "Composed Email Body: $emailBody"
 }
 
 # Example usage:
