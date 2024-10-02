@@ -34,7 +34,7 @@ inputs:
 outputs:
   emailBody:
     description: 'The composed email body'
-    value: ${{ steps.compose-mail.outputs.emailBody }}
+    value: ${{ steps.compose-mail.outputs.emailBodyBase64 }}
 
 runs:
   using: 'composite'
