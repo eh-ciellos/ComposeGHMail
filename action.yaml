@@ -32,7 +32,7 @@ inputs:
     required: false
 
 outputs:
-  emailBody:
+  emailBodyBase64:
     description: 'The composed email body'
     value: ${{ steps.compose-mail.outputs.emailBodyBase64 }}
 
