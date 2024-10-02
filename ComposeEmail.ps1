@@ -99,4 +99,4 @@ Write-Output $emailBody
 #$Message = "This is an example error message"
 #$RunName = "Example Workflow Run"
 #$RunId = "123456"
-Compose-Email -Message $Message -RunName $RunName -RunId $RunId
+Compose-Email -Message $Message -RunName $RunName -RunId $RunId -RunURL $RunURL -RunConclusion $RunConclusion -RunAttempts $RunAttempts -RunStartTime $RunStartTime -RunOnBranch $RunOnBranch -RunAtEvent $RunAtEvent
