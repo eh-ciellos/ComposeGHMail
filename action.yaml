@@ -1,4 +1,5 @@
 # .github/actions/compose-email/action.yml
+
 name: 'Compose Mail'
 description: 'Compose an email based on the workflow message'
 inputs:
@@ -11,16 +12,35 @@ inputs:
   workflowRunId:
     description: 'The workflow run ID'
     required: false
+  workflowRunURL:
+    description: 'The URL of the workflow run'
+    required: false
+  workflowRunConclusion:
+    description: 'The conclusion of the workflow run'
+    required: false
+  workflowRunAttempts:
+    description: 'Number of attempts of the workflow run'
+    required: false
+  workflowRunStartTime:
+    description: 'Start time of the workflow run'
+    required: false
+  workflowRunOnBranch:
+    description: 'Branch on which the workflow run was executed'
+    required: false
+  workflowRunAtEvent:
+    description: 'Event that triggered the workflow run'
+    required: false
 
 outputs:
-  emailBodyBase64:
+  emailBody:
     description: 'The composed email body'
-    value: ${{ steps.compose_mail.outputs.emailBodyBase64 }}
+    value: ${{ steps.compose-mail.outputs.emailBody }}
+
 runs:
   using: 'composite'
   steps:
     - name: 'Compose Email'
-      id: compose_mail
+      id: compose-mail
       shell: pwsh
       run: |
-        try { ${{ github.action_path }}/ComposeEmail.ps1 -Message "${{ inputs.workflowMessage }}" -RunName "${{ inputs.workflowRunName }}" -RunId "${{ inputs.workflowRunId }}" } catch { Write-Host "::Error::Unexpected error when running action ($($_.Exception.Message))"; exit 1 }
+        try { ${{ github.action_path }}/ComposeEmail.ps1 -Message ${{ inputs.workflowMessage }} -RunName ${{ inputs.workflowRunName }} -RunId ${{ inputs.workflowRunId }} -RunURL ${{ inputs.workflowRunURL }} -RunConclusion ${{ inputs.workflowRunConclusion }} -RunAttempts ${{ inputs.workflowRunAttempts }} -RunStartTime ${{ inputs.workflowRunStartTime }} -RunOnBranch ${{ inputs.workflowRunOnBranch }} -RunAtEvent ${{ inputs.workflowRunAtEvent }} } catch { Write-Host "::Error::Unexpected error when running action ($($_.Exception.Message))"; exit 1 }
