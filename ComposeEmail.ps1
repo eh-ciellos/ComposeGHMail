@@ -54,6 +54,16 @@ Write-Output "Received workflow run start time: $RunStartTime"
 Write-Output "Received workflow run branch: $RunOnBranch"
 Write-Output "Received workflow run event: $RunAtEvent"
 
+# Step 1: Decode the Base64 Message var
+if (-not [string]::IsNullOrEmpty($Message)) {
+  $byteArray = [Convert]::FromBase64String($Message)
+  $MessageContent = [Text.Encoding]::UTF8.GetString($byteArray)
+  Write-Host "Decoded workflowRunMessage."
+} else {
+  Write-Host "Error: emailBodyBase64 is empty."
+  exit 1
+}
+
 # Build the email body
 $emailBody =
 @"
@@ -72,7 +82,7 @@ $emailBody =
   <li><strong>Event:</strong> $RunAtEvent</li>
 </ul>
 <h2>Error Details:</h2>
-<pre>$Message</pre>
+<pre>$MessageContent</pre>
 </body>
 </html>
 "@
